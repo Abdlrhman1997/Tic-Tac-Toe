@@ -23,7 +23,16 @@ body {
   font-size: 250%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding: 2%;
+  /* justify-content: center; */
+}
+
+#player {
+  font-size: 200%;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
 }
 
 #container {
@@ -35,10 +44,15 @@ body {
   grid-template-rows: 150px 150px 150px;
 
   position: absolute;
-  left: 35%;
-  top: 20%;
+  left: 33%;
+  top: 25%;
 }
 
 .square {
   border: 1px solid grey;
+}
+
+.square:hover {
+  background-color: rgb(79, 83, 83);
+  opacity: 25%;
 }
