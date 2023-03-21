@@ -12,11 +12,19 @@ const displayGameBoard = (() => {
   let playerTitleParag = document.querySelector("#player");
   let playerTurn = "x";
 
+  function removeEventSquareDivs(squareDivs) {
+    for (let i = 0; i < squareDivs.length; i++) {
+      squareDivs[i].removeEventListener("click", addSign);
+    }
+  }
+
   function checkXorO(gameBoardValue) {
     if (gameBoardValue === "x") {
-      playerTitleParag.textContent = `Player X win!`;
+      playerTitleParag.textContent = `Player X wins!`;
+      removeEventSquareDivs(gameBoardDivs);
     } else if (gameBoardValue === "o") {
-      playerTitleParag.textContent = `Player O win!`;
+      playerTitleParag.textContent = `Player O wins!`;
+      removeEventSquareDivs(gameBoardDivs);
     }
   }
 
@@ -40,27 +48,29 @@ const displayGameBoard = (() => {
     }
   }
 
-  for (let i = 0; i < gameBoardDivs.length; i++) {
-    gameBoardDivs[i].addEventListener("click", (e) => {
-      let divId = e.target.id;
+  function addSign(e) {
+    let divId = e.target.id;
 
-      if (playerTurn == "x" && e.target.textContent === "") {
-        e.target.textContent = "x";
+    if (playerTurn == "x" && e.target.textContent === "") {
+      e.target.textContent = "x";
+      gameBoard.gameBoard[divId - 1] = e.target.textContent;
+      playerTurn = "o";
+      playerTitleParag.textContent = "Player O's turn";
+      checkWinner(gameBoard.gameBoard);
+      console.log(gameBoard.gameBoard);
+    } else {
+      if (e.target.textContent == "") {
+        e.target.textContent = "o";
         gameBoard.gameBoard[divId - 1] = e.target.textContent;
-        playerTurn = "o";
-        playerTitleParag.textContent = "Player O's turn";
+        playerTurn = "x";
+        playerTitleParag.textContent = "Player X's turn";
         checkWinner(gameBoard.gameBoard);
         console.log(gameBoard.gameBoard);
-      } else {
-        if (e.target.textContent == "") {
-          e.target.textContent = "o";
-          gameBoard.gameBoard[divId - 1] = e.target.textContent;
-          playerTurn = "x";
-          playerTitleParag.textContent = "Player X's turn";
-          checkWinner(gameBoard.gameBoard);
-          console.log(gameBoard.gameBoard);
-        }
       }
-    });
+    }
+  }
+
+  for (let i = 0; i < gameBoardDivs.length; i++) {
+    gameBoardDivs[i].addEventListener("click", addSign);
   }
 })();
