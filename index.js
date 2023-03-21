@@ -1,6 +1,6 @@
 let gameBoard = {
   // gameBoard: ["", "", "", "", "", "", "", "", ""],
-  gameBoard: ["X", "O", "o", "x", "o", "x", "o", "", ""],
+  gameBoard: ["", "", "", "", "", "", "", "", ""],
 };
 
 let Player = (name) => {
