@@ -28,6 +28,17 @@ const displayGameBoard = (() => {
     }
   }
 
+  function checkDraw(gameBoard) {
+    let check = true;
+    for (let i = 0; i < gameBoard.length; i++) {
+      if (gameBoard[i] === "") {
+        check = false;
+      }
+    }
+
+    if (check) playerTitleParag.textContent = `It's a Draw!`;
+  }
+
   function checkWinner(gameBoard) {
     if (gameBoard[0] === gameBoard[3] && gameBoard[0] === gameBoard[6]) {
       return checkXorO(gameBoard[0]);
@@ -57,6 +68,7 @@ const displayGameBoard = (() => {
       playerTurn = "o";
       playerTitleParag.textContent = "Player O's turn";
       checkWinner(gameBoard.gameBoard);
+      checkDraw(gameBoard.gameBoard);
       console.log(gameBoard.gameBoard);
     } else {
       if (e.target.textContent == "") {
@@ -65,6 +77,7 @@ const displayGameBoard = (() => {
         playerTurn = "x";
         playerTitleParag.textContent = "Player X's turn";
         checkWinner(gameBoard.gameBoard);
+        checkDraw(gameBoard.gameBoard);
         console.log(gameBoard.gameBoard);
       }
     }
