@@ -70,4 +70,11 @@ button {
   padding: 5px;
   font-size: 2.5em;
   border-radius: 10px;
+  cursor: pointer;
+}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
 }
