@@ -12,6 +12,8 @@ const displayGameBoard = (() => {
   let playerTitleParag = document.querySelector("#player");
   let playerTurn = "x";
 
+  function restarGame() {}
+
   function removeEventSquareDivs(squareDivs) {
     for (let i = 0; i < squareDivs.length; i++) {
       squareDivs[i].removeEventListener("click", addSign);
