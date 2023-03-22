@@ -12,8 +12,6 @@ const displayGameBoard = (() => {
   let playerTitleParag = document.querySelector("#player");
   let playerTurn = "x";
 
-  function restarGame() {}
-
   function removeEventSquareDivs(squareDivs) {
     for (let i = 0; i < squareDivs.length; i++) {
       squareDivs[i].removeEventListener("click", addSign);
@@ -88,4 +86,16 @@ const displayGameBoard = (() => {
   for (let i = 0; i < gameBoardDivs.length; i++) {
     gameBoardDivs[i].addEventListener("click", addSign);
   }
+
+  let restarGameButton = document.querySelector("button");
+
+  restarGameButton.addEventListener("click", () => {
+    for (let i = 0; i < gameBoard.gameBoard.length; i++) {
+      gameBoard.gameBoard[i] = "";
+      gameBoardDivs[i].textContent = "";
+      playerTitleParag.textContent = "Player X's turn";
+      playerTurn = "x";
+      gameBoardDivs[i].addEventListener("click", addSign);
+    }
+  });
 })();
